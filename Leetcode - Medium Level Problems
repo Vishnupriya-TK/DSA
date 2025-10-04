@@ -1,0 +1,68 @@
+//Leetcode Problems - Medium Level
+
+// 54. Spiral Matrix
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {       
+        //result
+        List<Integer> res = new ArrayList<>();
+        //Initialize
+        int cols=0;
+        int rows=0;
+        int rowe=matrix.length-1;
+        int cole=matrix[0].length-1;       
+       //Logic
+while(cols<=cole && rows<=rowe){ 
+       for(int i=cols;i<=cole;i++){
+        res.add(matrix[rows][i]);
+       }
+       rows++;
+       for(int i=rows;i<=rowe;i++){
+        res.add(matrix[i][cole]);
+       }
+        cole--;
+       if(rows<=rowe){
+        for(int i=cole;i>=cols;i--){
+            res.add(matrix[rowe][i]);
+        }
+         rowe--;
+       }
+        if(cols<=cole){
+           for(int i=rowe;i>=rows;i--){
+            res.add(matrix[i][cols]);
+           } 
+           cols++;
+        }
+}
+return res;
+    }
+}
+
+// 59. Spiral Matrix 
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] mat = new int[n][n];
+        int val=1;
+        int rs=0, cs=0, re=n-1, ce=n-1;
+        while(cs<=ce && rs<=re){
+            for(int i=cs;i<=ce;i++){
+                mat[rs][i]=val++;
+            }
+            rs++;
+            for(int i=rs;i<=re;i++){
+                mat[i][ce]=val++;
+            }
+            ce--;
+            if(rs<=re){
+                for(int i=ce;i>=cs;i--){
+                    mat[re][i]=val++;
+                }
+                re--;
+            }
+            if(cs<=ce){
+                for(int i=re;i>=rs;i--){
+                    mat[i][cs]=val++;
+                }
+                cs++;
+}   }
+        return mat;
+}   }
